@@ -9,7 +9,6 @@
 				<a-row align="middle" justify="center">
 					<a-col :span="8">
 						<h3 class="filterCategoryText">Filter by category</h3>
-						<!-- <h2>{{ categories }}</h2> -->
 					</a-col>
 					<a-col :span="12">
 						<a-select
@@ -19,7 +18,13 @@
 							style="width: 100%"
 							@change="handleChange"
 						>
-							<a-select-option value="prueba">viendo</a-select-option>
+							<a-select-option
+								v-for="category in categories"
+								:key="category.list_name_encoded"
+								:value="category.list_name"
+							>
+								{{ category.list_name }}</a-select-option
+							>
 						</a-select>
 					</a-col>
 				</a-row>
@@ -35,6 +40,7 @@ import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
 Vue.config.productionTip = false;
 Vue.use(Antd);
+
 // import { Select } from "antd";
 // import { Row, Col } from "antd";
 // const { Option } = Select;
