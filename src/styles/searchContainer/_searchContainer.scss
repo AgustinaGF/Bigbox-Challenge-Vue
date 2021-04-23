@@ -1,5 +1,6 @@
+@import "./variables.scss";
 .loading {
-    background-color: black;
+    background-color: $loadingBackground;
     position: fixed;
     display: flex;
     align-items: center;

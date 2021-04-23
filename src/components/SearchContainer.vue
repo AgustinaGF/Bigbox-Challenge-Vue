@@ -10,14 +10,15 @@
 
 <script>
 import Vue from "vue";
+import VueAxios from "vue-axios";
 import axios from "axios";
 import loading from "../assets/loading.gif";
-// import CategorySelector from "../components/CategorySelector";
+
 import CategorySelector from "./CategorySelector.vue";
-// import CategorySelector from './CategorySelector.vue';
+
 const APIKEY = "HJVz2wUKrZDzMcJgCE6L8SAG43p60Y8Q";
 let categoryList = [];
-Vue.use(axios);
+Vue.use(VueAxios, axios);
 export default {
 	name: "SearchContainer",
 	components: {
@@ -39,11 +40,6 @@ export default {
 				}
 				this.books = categoryList;
 				this.isLoading = false;
-				console.log(resp);
-				console.log(data);
-				console.log(categoryList);
-				console.log(this.books);
-				console.log(this.isLoading);
 			});
 	},
 };

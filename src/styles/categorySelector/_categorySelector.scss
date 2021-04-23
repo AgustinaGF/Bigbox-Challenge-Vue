@@ -1,5 +1,6 @@
+@import "./variables.scss";
 .header {
-    background-color: #cc4e37;
+    background-color: $headerBackground;
     height: 6em;
     width: 100%;
     display: flex;
@@ -9,22 +10,19 @@
 }
 
 .titlePage {
-    // hacerlo variable
-    font-family: "Yellowtail", sans-serif;
+    font-family: $fontTitle;
     font-size: 26px;
 }
 
 .container-Row {
     margin-top: 4em;
-    // hacerlo variable
-    background-color: #436e65;
+    background-color: $containerRowColor;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
 .filterCategoryText {
-    // variable
-    font-family: "PT Sans", sans-serif;
+    font-family: $fontCategory;
     font-size: 15px;
     text-align: left;
 }
