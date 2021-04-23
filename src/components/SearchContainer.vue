@@ -1,5 +1,4 @@
 <template>
-	<!-- <h1>probando endpoint</h1> -->
 	<div class="loading" v-if="isLoading">
 		<img alt="loading" :src="gifLoading" />;
 	</div>
