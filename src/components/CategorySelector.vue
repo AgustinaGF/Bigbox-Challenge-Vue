@@ -29,39 +29,54 @@
 					</a-col>
 				</a-row>
 			</div>
+			<!-- pasar Props y fijalrme el tema que me da not define los hooks -->
+			<!-- <h1>{{ selectCategoryList }}</h1> -->
+		</div>
+		<div>
+			<search-box
+				:arrayResultsForCategory="selectCategoryList"
+				:disabled="disabled"
+			></search-box>
 		</div>
 	</div>
 </template>
 
 <script>
 import Vue from "vue";
+import axios from "axios";
+Vue.use(axios);
 import logo from "../assets/logo.png";
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
 Vue.config.productionTip = false;
 Vue.use(Antd);
+import SearchBox from "./SearchBox.vue";
+const APIKEY = "HJVz2wUKrZDzMcJgCE6L8SAG43p60Y8Q";
 
-// import { Select } from "antd";
-// import { Row, Col } from "antd";
-// const { Option } = Select;
-// const APIKEY = "HJVz2wUKrZDzMcJgCE6L8SAG43p60Y8Q";
-
-// console.log(this.props);
 export default {
 	name: "CategorySelector",
-	// a esto tengo que hacerle un map
+	components: {
+		SearchBox,
+	},
 	methods: {
 		handleChange(value) {
 			console.log(`selected ${value}`);
+			axios
+				.get(
+					`https://api.nytimes.com/svc/books/v3/lists/current/${value}?api-key=${APIKEY}`
+				)
+				.then((result) => {
+					let data = result;
+					console.log(data, "que vino");
+					this.selectCategoryList = data;
+					console.log(this.selectCategoryList);
+					this.disabled = false;
+				});
 		},
 	},
 	props: ["categories"],
 	data() {
-		return { selectCategoryList: undefined, logo: logo };
+		return { selectCategoryList: undefined, logo: logo, disabled: true };
 	},
 };
 </script>
-
-<style>
-/* @import "ant-design-vue/dist/antd.css"; */
-</style>
